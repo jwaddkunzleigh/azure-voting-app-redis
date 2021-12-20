@@ -55,7 +55,8 @@ pipeline {
                script {
                   docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
                      def image = docker.build('mordecaimook/jenkins-course:latest')
-                     image.push()
+                     image.push("${env.BUILD_NUMBER}")
+                     image.push("latest")
                   }
                }
             }
